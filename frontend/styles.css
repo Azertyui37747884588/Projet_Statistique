@@ -1,0 +1,367 @@
+/* ===========================
+   🌐 Palette inspirée de Posit
+   =========================== */
+:root {
+  /* Primary / accents */
+  --color-primary: #1A4D8F; /* Bleu profond */
+  --color-primary-foreground: #FFFFFF;
+  --color-primary-dark: #0B2847; /* Bleu nuit profond */
+
+  --color-secondary: #2FBF71; /* Vert analytique */
+  --color-secondary-foreground: #FFFFFF;
+
+  --color-accent: #4CB0FF; /* Bleu ciel data */
+  --color-accent-foreground: #0B2847;
+
+  /* Background & text */
+  --color-bg: #F8FAFC; /* Gris très clair */
+  --color-foreground: #0F172A; /* Bleu nuit / texte principal */
+
+  /* Cards & popovers */
+  --color-card: #FFFFFF; /* Card */
+  --color-card-foreground: #0F172A;
+  --color-popover: #FFFFFF; /* Popover */
+  --color-popover-foreground: #1A1F2C;
+
+  /* Muted */
+  --color-muted: #E2E8F0;
+  --color-muted-foreground: #64748B;
+
+  /* Destructive */
+  --color-destructive: #E11D48;
+  --color-destructive-foreground: #FFFFFF;
+
+  /* Inputs & borders */
+  --color-border: #CBD5E1;
+  --color-input: #FFFFFF;
+  --color-ring: #14B8A6; /* focus ring */
+
+  /* Charts */
+  --chart-1: #1A73E8;
+  --chart-2: #34A853;
+  --chart-3: #FBBC05;
+  --chart-4: #A142F4;
+  --chart-5: #FF7043;
+
+  /* Sidebar */
+  --sidebar-bg: #0B1B33;
+  --sidebar-foreground: #E2E8F0;
+  --sidebar-primary: #1A4D8F;
+  --sidebar-accent: #2DD4BF;
+  --sidebar-border: #1E293B;
+
+  /* Utilities */
+  --color-success: #22c55e;
+  --color-error: var(--color-destructive);
+}
+
+/* Load a web fallback serif font and prefer local Book Antiqua when available */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+
+/* ===========================
+   🎨 Chargement des polices
+   =========================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+/* ===========================
+   🧱 Structure générale
+   =========================== */
+body {
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  background: var(--color-bg);
+  margin: 0;
+  color: var(--color-foreground);
+  line-height: 1.6;
+}
+
+/* Homepage specific background: bleu -> lavande -> gris */
+.home-page {
+  background: linear-gradient(135deg, #1A4D8F 0%, #E6E6FA 50%, #E5E7EB 100%);
+  min-height: calc(100vh - 0px);
+  padding-top: 12px;
+}
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===========================
+   🧭 En-tête + Navigation
+   =========================== */
+header {
+  background: #000000;
+  color: #ffffff;
+  padding: 18px 0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  font-family: "Book Antiqua", "Playfair Display", "Palatino Linotype", serif;
+  font-weight: 700;
+}
+
+header .logo {
+  font-size: 1.8em;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  font-family: "Book Antiqua", "Playfair Display", "Palatino Linotype", serif;
+}
+
+nav {
+  float: right;
+}
+
+nav button {
+  background: transparent;
+  border: none;
+  color: white;
+  margin: 0 10px;
+  padding: 10px 16px;
+  font-size: 1em;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+nav button {
+  font-family: "Book Antiqua", "Playfair Display", "Palatino Linotype", serif;
+  font-weight: 700;
+}
+
+nav button:hover,
+nav button.active {
+  background: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+/* ===========================
+   📊 Sections
+   =========================== */
+.section {
+  display: none;
+  padding: 50px 0;
+}
+
+.section.active {
+  display: block;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================
+   🧩 Cartes et blocs
+   =========================== */
+section {
+  background: var(--color-card);
+  border-radius: 10px;
+  padding: 25px 30px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 40px;
+}
+
+h2 {
+  color: var(--color-primary-dark);
+  border-left: 5px solid var(--color-primary);
+  padding-left: 10px;
+  margin-top: 0;
+}
+
+/* ===========================
+   🧠 Formulaires généraux
+   =========================== */
+input, select {
+  width: 100%;
+  padding: 12px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 1em;
+  margin-top: 10px;
+  box-sizing: border-box;
+  transition: border-color 0.2s, box-shadow 0.3s;
+  background: var(--color-input);
+  color: var(--color-foreground);
+}
+
+input:focus, select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(20,184,166,0.12); /* --color-ring */
+  outline: none;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 20px 0;
+}
+
+.form-group input, .form-group select {
+  flex: 1 1 200px;
+}
+
+/* ===========================
+   🧮 Boutons
+   =========================== */
+button, .btn {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 600;
+  transition: all 0.25s ease-in-out;
+}
+
+button:hover, .btn:hover {
+  background: linear-gradient(90deg, var(--color-accent), var(--color-primary));
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+/* ===========================
+   🧮 Bloc Tests statistiques
+   =========================== */
+.test-form {
+  background: #fff;
+  padding: 1.8rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  width: 85%;
+  max-width: 650px;
+  margin: 2rem auto;
+  animation: fadeIn 0.6s ease;
+  transition: all 0.3s ease-in-out;
+}
+
+.test-form:hover {
+  transform: scale(1.01);
+}
+
+.test-form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+}
+
+.test-form select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.test-form select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 6px rgba(76,176,255,0.18);
+}
+
+.test-form button {
+  display: block;
+  margin: 1.2rem auto 0 auto;
+  background: var(--color-primary);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.test-form button:hover {
+  background: var(--color-accent);
+  transform: translateY(-1px);
+}
+
+/* Message résultats */
+#testResult {
+  margin-top: 1rem;
+  font-weight: 500;
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.message {
+  font-weight: 500;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.message.success { color: var(--color-success); }
+.message.error { color: var(--color-error); }
+.message.loading { color: var(--color-accent); }
+
+/* ===========================
+   📈 Visualisations
+   =========================== */
+.viz-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.viz-container img {
+  max-width: 85%;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+/* ===========================
+   📱 Responsive design
+   =========================== */
+@media (max-width: 768px) {
+  header .logo {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  nav {
+    float: none;
+    text-align: center;
+  }
+
+  nav button {
+    display: inline-block;
+    margin: 5px;
+  }
+
+  .form-group {
+    flex-direction: column;
+  }
+
+  .viz-container img {
+    max-width: 100%;
+  }
+}
+
+/* ===========================
+   ⚙️ Pied de page
+   =========================== */
+footer {
+  text-align: center;
+  background: var(--color-primary-dark);
+  color: white;
+  padding: 25px 0;
+  margin-top: 50px;
+  font-size: 0.9em;
+  letter-spacing: 0.3px;
+}
